@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: ${PRODUCT_URI:http://localhost:8081}
+          predicates:
+            - Path=/product/**
+        - id: order-service
+          uri: ${ORDER_URI:http://localhost:8082}
+          predicates:
+            - Path=/orders/**
+        - id: payment-service
+          uri: ${PAYMENT_URI:http://localhost:8083}
+          predicates:
+            - Path=/payment/**
